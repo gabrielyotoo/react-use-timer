@@ -1,9 +1,9 @@
 {
   "name": "@gabrielyotoo/react-use-timer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Hook for timer to React",
-  "types": "./lib/cjs/types/index.d.ts",
-  "main": "./lib/cjs/index.js",
+  "types": "./lib/cjs/types/useTimer.d.ts",
+  "main": "./lib/cjs/useTimer.js",
   "directories": {
     "example": "example"
   },
@@ -30,12 +30,12 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./lib/esm/types/index.d.ts",
-        "default": "./lib/esm/index.mjs"
+        "types": "./lib/esm/types/useTimer.d.ts",
+        "default": "./lib/esm/useTimer.mjs"
       },
       "require": {
-        "types": "./lib/cjs/types/index.d.ts",
-        "default": "./lib/cjs/index.js"
+        "types": "./lib/cjs/types/useTimer.d.ts",
+        "default": "./lib/cjs/useTimer.js"
       }
     }
   },
