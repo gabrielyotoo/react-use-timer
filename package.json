@@ -1,5 +1,5 @@
 {
-  "name": "react-use-timer",
+  "name": "@gabrielyotoo/react-use-timer",
   "version": "1.0.0",
   "description": "Hook for timer to React",
   "main": "useTimer.ts",

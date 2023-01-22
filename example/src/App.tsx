@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import useTimer from 'react-use-timer';
+import useTimer from '@gabrielyotoo/react-use-timer';
 
 function App() {
   const [finished, setFinished] = useState(false);
