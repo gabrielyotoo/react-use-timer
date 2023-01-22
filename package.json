@@ -2,22 +2,43 @@
   "name": "@gabrielyotoo/react-use-timer",
   "version": "1.0.0",
   "description": "Hook for timer to React",
-  "main": "useTimer.ts",
+  "types": "./lib/cjs/types/index.d.ts",
+  "main": "./lib/cjs/index.js",
   "directories": {
     "example": "example"
   },
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
+    "clean": "rm -rf ./lib",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build:esm": "npx tsc -p ./tsconfig.esm.json",
+    "build:cjs": "npx tsc -p ./tsconfig.cjs.json",
+    "prepack": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gabrielyoto/react-use-timer.git"
+    "url": "https://github.com/gabrielyoto/react-use-timer.git"
   },
   "keywords": [
     "hook",
     "react",
     "timer"
   ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/esm/types/index.d.ts",
+        "default": "./lib/esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/cjs/types/index.d.ts",
+        "default": "./lib/cjs/index.js"
+      }
+    }
+  },
   "author": "Gabriel Freitas Yamamoto",
   "license": "MIT",
   "bugs": {
@@ -28,6 +49,7 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.27"
+    "@types/react": "^18.0.27",
+    "typescript": "^4.9.4"
   }
 }
