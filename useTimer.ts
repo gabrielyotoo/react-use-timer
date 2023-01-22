@@ -1,32 +1,71 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 
-const useTimer = (time: number, autoStart = false) => {
+interface UseTimerOptions {
+  autoStart?: boolean;
+  runEvery?: number;
+  onFinish?: () => void;
+  onStart?: () => void;
+}
+
+const useTimer = (
+  time: number,
+  {
+    autoStart = false,
+    runEvery = 1000,
+    onFinish,
+    onStart,
+  }: UseTimerOptions = {}
+) => {
+  const timeoutRef = useRef<number | null>(null);
+
   const [currentTime, setCurrentTime] = useState(time);
-  const [finished, setFinished] = useState(!autoStart);
+  const [running, setRunning] = useState(autoStart);
+  const [paused, setPaused] = useState(false);
 
-  const startTimer = () => {
-    setCurrentTime(time);
-    setFinished(false);
-  };
+  const startTimer = useCallback(() => {
+    if (onStart) {
+      onStart();
+    }
+    if (timeoutRef.current && currentTime !== time) {
+      clearTimeout(timeoutRef.current);
+    }
+    if (!paused) {
+      setCurrentTime(time);
+    }
+    setRunning(true);
+    setPaused(false);
+  }, [currentTime, onStart, paused, time]);
 
-  const count = useCallback(() => {
-    if (finished) {
+  const pauseTimer = useCallback(() => {
+    if (timeoutRef.current && currentTime !== time) {
+      clearTimeout(timeoutRef.current);
+    }
+    setRunning(false);
+    setPaused(true);
+  }, [currentTime, time]);
+
+  useEffect(() => {
+    if (!running) {
       return;
     }
     if (currentTime > 0) {
-      setTimeout(() => {
-        setCurrentTime(currentTime - 1);
-      }, 1000);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => {
+        if (currentTime > 0) {
+          setCurrentTime((time) => time - 1);
+        }
+      }, runEvery);
     } else {
-      setFinished(true);
+      setRunning(false);
+      if (onFinish) {
+        onFinish();
+      }
     }
-  }, [currentTime, finished]);
+  }, [currentTime, running, runEvery, time, onFinish]);
 
-  useEffect(() => {
-    count();
-  }, [count]);
-
-  return { currentTime, startTimer, finished };
+  return { currentTime, startTimer, running, pauseTimer };
 };
 
 export default useTimer;

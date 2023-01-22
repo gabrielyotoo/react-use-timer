@@ -23,5 +23,11 @@
   "bugs": {
     "url": "https://github.com/gabrielyoto/react-use-timer/issues"
   },
-  "homepage": "https://github.com/gabrielyoto/react-use-timer#readme"
+  "homepage": "https://github.com/gabrielyoto/react-use-timer#readme",
+  "dependencies": {
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27"
+  }
 }
