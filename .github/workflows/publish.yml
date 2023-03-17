@@ -23,8 +23,8 @@ jobs:
 
       - name: Setup Git
         run: |
-          git config user.name '${{secrets.MAINTAINER_NAME}}'
-          git config user.email '${{secrets.MAINTAINER_EMAIL}}'
+          git config user.name 'Gabriel Yamamoto'
+          git config user.email 'gabrielyamamoto82@gmail.com'
       - name: Install using Yarn
         uses: Borales/actions-yarn@v4.2.0
         with:
