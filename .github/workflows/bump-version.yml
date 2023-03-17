@@ -43,15 +43,19 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install packages
-        run: yarn install
+      - name: Install using Yarn
+        uses: Borales/actions-yarn@v4.2.0
+        with:
+          cmd: install
 
       - name: Setup Git
         run: |
           git config user.name '${{secrets.MAINTAINER_NAME}}'
           git config user.email '${{secrets.MAINTAINER_EMAIL}}'
       - name: bump version
-        run: yarn version ${{ github.event.inputs.version }}
+        uses: Borales/actions-yarn@v4.2.0
+        with:
+          cmd: version --${{ github.event.inputs.version }}
 
       - name: Push latest version
         run: git push origin main --follow-tags
