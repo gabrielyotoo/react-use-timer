@@ -46,6 +46,10 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+      - name: Install dependencies with Yarn
+        uses: Borales/actions-yarn@v4.2.0
+        with:
+          cmd: install
       - name: Build package with Yarn
         uses: Borales/actions-yarn@v4.2.0
         with:
