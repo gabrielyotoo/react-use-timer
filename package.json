@@ -12,10 +12,10 @@
   ],
   "scripts": {
     "clean": "rm -rf ./lib",
-    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build": "yarn clean && yarn build:esm && yarn build:cjs",
     "build:esm": "npx tsc -p ./tsconfig.esm.json",
     "build:cjs": "npx tsc -p ./tsconfig.cjs.json",
-    "prepack": "npm run build",
+    "prepack": "yarn build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
