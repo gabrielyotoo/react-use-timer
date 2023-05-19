@@ -20,6 +20,10 @@ jobs:
         uses: Borales/actions-yarn@v4.2.0
         with:
           cmd: install
+      - name: Test package
+        uses: Borales/actions-yarn@v4.2.0
+        with:
+          cmd: test
       - name: Build package with Yarn
         uses: Borales/actions-yarn@v4.2.0
         with:

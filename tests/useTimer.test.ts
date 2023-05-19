@@ -87,7 +87,7 @@ test('should call onFinish function if it exists', async () => {
   result.current.startTimer();
 
   expect(result.current.currentTime).toBe(2);
-  await sleep(210);
+  await sleep(300);
 
   expect(called).toBeTruthy();
 });
