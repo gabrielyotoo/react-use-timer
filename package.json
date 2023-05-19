@@ -15,8 +15,8 @@
   "scripts": {
     "clean": "rm -rf ./lib",
     "build": "yarn clean && yarn build:esm && yarn build:cjs",
-    "build:esm": "npx tsc -p ./tsconfig.esm.json",
-    "build:cjs": "npx tsc -p ./tsconfig.cjs.json",
+    "build:esm": "npx tsc -p ./tsconfig.esm.json && mv ./lib/esm/useTimer.js ./lib/esm/useTimer.mjs",
+    "build:cjs": "npx tsc -p ./tsconfig.cjs.json && mv ./lib/cjs/useTimer.js ./lib/cjs/useTimer.cjs",
     "prepack": "yarn build",
     "test": "vitest"
   },
@@ -54,6 +54,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react-hooks": "^8.0.1",
+    "@types/node": "^20.2.1",
     "@types/react": "^18.0.27",
     "@vitest/coverage-c8": "^0.31.0",
     "generate-changelog": "^1.8.0",
