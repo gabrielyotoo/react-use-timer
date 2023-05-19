@@ -65,13 +65,29 @@ test('should stop the timer when times up', async () => {
   result.current.startTimer();
 
   expect(result.current.currentTime).toBe(2);
-  await sleep(200);
+  await sleep(300);
 
   expect(result.current.currentTime).toBe(0);
   await sleep(100);
+
   expect(result.current.currentTime).toBe(0);
 });
 
-test('should call onFinish function if it exists', () => {
-  // to be done
+test('should call onFinish function if it exists', async () => {
+  let called = false;
+  const { result } = renderHook(() =>
+    useTimer(2, {
+      runEvery: 100,
+      onFinish: () => {
+        called = true;
+      },
+    })
+  );
+
+  result.current.startTimer();
+
+  expect(result.current.currentTime).toBe(2);
+  await sleep(210);
+
+  expect(called).toBeTruthy();
 });
