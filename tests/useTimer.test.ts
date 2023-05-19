@@ -46,16 +46,16 @@ test('should decrease current time at time specified', async () => {
 });
 
 test('should pause the timer when pause is requested', async () => {
-  const { result } = renderHook(() => useTimer(5, { runEvery: 100 }));
+  const { result } = renderHook(() => useTimer(5, { runEvery: 200 }));
 
   result.current.startTimer();
 
   expect(result.current.currentTime).toBe(5);
-  await sleep(200);
+  await sleep(210);
   expect(result.current.currentTime).toBe(4);
 
   result.current.pauseTimer();
-  await sleep(200);
+  await sleep(220);
   expect(result.current.currentTime).toBe(4);
 });
 
