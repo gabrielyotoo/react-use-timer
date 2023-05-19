@@ -16,7 +16,7 @@ const useTimer = (
     onStart,
   }: UseTimerOptions = {}
 ) => {
-  const timeoutRef = useRef<number | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const [currentTime, setCurrentTime] = useState(time);
   const [running, setRunning] = useState(autoStart);

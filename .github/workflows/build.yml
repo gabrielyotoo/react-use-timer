@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [16.x, 18.x]
 
     steps:
       - uses: actions/checkout@v1
@@ -20,6 +20,10 @@ jobs:
         uses: Borales/actions-yarn@v4.2.0
         with:
           cmd: install
+      - name: Test package
+        uses: Borales/actions-yarn@v4.2.0
+        with:
+          cmd: test run
       - name: Build package with Yarn
         uses: Borales/actions-yarn@v4.2.0
         with:
