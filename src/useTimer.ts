@@ -1,20 +1,22 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 
-interface UseTimerOptions {
+export interface UseTimerOptions {
   autoStart?: boolean;
   runEvery?: number;
   onFinish?: () => void;
   onStart?: () => void;
 }
 
-const useTimer = (
-  time: number,
-  {
-    autoStart = false,
-    runEvery = 1000,
-    onFinish,
-    onStart,
-  }: UseTimerOptions = {}
+export interface UseTimerReturn {
+  currentTime: number;
+  startTimer: () => void;
+  running: boolean;
+  pauseTimer: () => void;
+}
+
+const useTimer: (time: number, options?: UseTimerOptions) => UseTimerReturn = (
+  time,
+  { autoStart = false, runEvery = 1000, onFinish, onStart } = {}
 ) => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 

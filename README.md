@@ -2,7 +2,7 @@
 
 react-use-timer is a hook to help you with timers in React.
 
-![Example](example.gif)
+![Example](./docs/example.gif)
 
 ## Installation
 
@@ -56,9 +56,9 @@ You can also run the [example](./example/) project.
 
 ## API
 
-| Name                                                                   | Type     | Description                      |
-| ---------------------------------------------------------------------- | -------- | -------------------------------- |
-| useTimer(time: number, options?: [UseTimerOptions](#usetimeroptions)): | function | Create timer with specified time |
+| Name                                                                                                     | Type     | Description                      |
+| -------------------------------------------------------------------------------------------------------- | -------- | -------------------------------- |
+| useTimer(time: number, options?: [UseTimerOptions](#usetimeroptions)): [UseTimerReturn](#usetimerreturn) | function | Create timer with specified time |
 
 ### useTimer Params
 
@@ -67,14 +67,23 @@ You can also run the [example](./example/) project.
 | time    | number                              | false    | The amount of ticks to run      |
 | options | [UseTimerOptions](#usetimeroptions) | true     | The configuration for the timer |
 
+### UseTimerReturn
+
+| Name        | Type       | Description                     |
+| ----------- | ---------- | ------------------------------- |
+| currentTime | number     | The current time of the timer   |
+| startTimer  | () => void | The function to start the timer |
+| running     | boolean    | If the timer is running or not  |
+| pauseTimer  | () => void | The function to pause the timer |
+
 ### UseTimerOptions
 
-| Name      | Type     | Optional | Description                                      |
-| --------- | -------- | -------- | ------------------------------------------------ |
-| autoStart | boolean  | true     | If the timer should start in the first render    |
-| runEvery  | number   | true     | The amount in milliseconds the timer should tick |
-| onStart   | function | true     | The function to be called when the timer starts  |
-| onFinish  | function | true     | The function to be called after the time's up    |
+| Name      | Type       | Optional | Description                                      |
+| --------- | ---------- | -------- | ------------------------------------------------ |
+| autoStart | boolean    | true     | If the timer should start in the first render    |
+| runEvery  | number     | true     | The amount in milliseconds the timer should tick |
+| onStart   | () => void | true     | The function to be called when the timer starts  |
+| onFinish  | () => void | true     | The function to be called after the time's up    |
 
 ## Contributing
 
