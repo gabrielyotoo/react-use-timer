@@ -1,14 +1,15 @@
-interface UseTimerOptions {
+export interface UseTimerOptions {
     autoStart?: boolean;
     runEvery?: number;
     onFinish?: () => void;
     onStart?: () => void;
 }
-declare const useTimer: (time: number, { autoStart, runEvery, onFinish, onStart, }?: UseTimerOptions) => {
+export interface UseTimerReturn {
     currentTime: number;
     startTimer: () => void;
     running: boolean;
     pauseTimer: () => void;
-};
+}
+declare const useTimer: (time: number, options?: UseTimerOptions) => UseTimerReturn;
 export default useTimer;
 //# sourceMappingURL=useTimer.d.ts.map
