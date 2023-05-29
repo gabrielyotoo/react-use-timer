@@ -12,7 +12,7 @@ To install run the following command in your project's folder if you are using y
 yarn add @gabrielyotoo/react-use-timer
 ```
 
-of if you are using npm
+or if you are using npm
 
 ```sh
 npm install @gabrielyotoo/react-use-timer
