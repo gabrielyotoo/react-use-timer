@@ -18,7 +18,8 @@
     "build:esm": "npx tsc -p ./tsconfig.esm.json && mv ./lib/esm/useTimer.js ./lib/esm/useTimer.mjs",
     "build:cjs": "npx tsc -p ./tsconfig.cjs.json && mv ./lib/cjs/useTimer.js ./lib/cjs/useTimer.cjs",
     "prepack": "yarn build",
-    "test": "vitest"
+    "test": "vitest",
+    "lint": "npx eslint src/** tests/**"
   },
   "repository": {
     "type": "git",
@@ -56,9 +57,18 @@
     "@testing-library/react-hooks": "^8.0.1",
     "@types/node": "^20.2.1",
     "@types/react": "^18.0.27",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
     "@vitest/coverage-c8": "^0.31.0",
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-jsdoc": "^46.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "generate-changelog": "^1.8.0",
     "jsdom": "^22.0.0",
+    "prettier": "2.8.8",
     "typescript": "^4.9.4",
     "vite": "^4.3.6",
     "vitest": "^0.31.1"
