@@ -20,6 +20,10 @@ jobs:
         uses: Borales/actions-yarn@v4.2.0
         with:
           cmd: install
+      - name: Lint code
+        uses: Borales/actions-yarn@v4.2.0
+        with:
+          cmd: lint
       - name: Test package
         uses: Borales/actions-yarn@v4.2.0
         with:
