@@ -26,7 +26,7 @@ A simple timer example showing the current time from 10 to 0.
 function App() {
   const [finished, setFinished] = useState(false);
 
-  const { currentTime, running, startTimer, pauseTimer } = useTimer(10, {
+  const { currentTime, isRunning, start, pause } = useTimer(10, {
     onFinish: () => {
       setFinished(true);
     },
@@ -39,13 +39,13 @@ function App() {
     <>
       {finished ? <p>Finished!</p> : null}
       <div>
-        {!running ? (
+        {!isRunning ? (
           <p>Not running! Timer at {currentTime}</p>
         ) : (
           <p>Timer at {currentTime}</p>
         )}
-        <button onClick={startTimer}>{!running ? 'Start!' : 'Reset'}</button>
-        {running ? <button onClick={pauseTimer}>Pause</button> : null}
+        <button onClick={start}>{!isRunning ? 'Start!' : 'Reset'}</button>
+        {isRunning ? <button onClick={pause}>Pause</button> : null}
       </div>
     </>
   );
@@ -69,21 +69,21 @@ You can also run the [example](./example/) project.
 
 ### UseTimerReturn
 
-| Name        | Type       | Description                     |
-| ----------- | ---------- | ------------------------------- |
-| currentTime | number     | The current time of the timer   |
-| startTimer  | () => void | The function to start the timer |
-| running     | boolean    | If the timer is running or not  |
-| pauseTimer  | () => void | The function to pause the timer |
+| Name          | Type     | Description                     |
+| ------------- | -------- | ------------------------------- |
+| currentTime   | number   | The current time of the timer   |
+| start(): void | function | The function to start the timer |
+| isRunning     | boolean  | If the timer is running or not  |
+| pause(): void | function | The function to pause the timer |
 
 ### UseTimerOptions
 
-| Name      | Type       | Optional | Description                                      |
-| --------- | ---------- | -------- | ------------------------------------------------ |
-| autoStart | boolean    | true     | If the timer should start in the first render    |
-| runEvery  | number     | true     | The amount in milliseconds the timer should tick |
-| onStart   | () => void | true     | The function to be called when the timer starts  |
-| onFinish  | () => void | true     | The function to be called after the time's up    |
+| Name             | Type     | Optional | Description                                     |
+| ---------------- | -------- | -------- | ----------------------------------------------- |
+| autoStart        | boolean  | true     | If the timer should start in the first render   |
+| interval         | number   | true     | The interval in milliseconds between ticks      |
+| onStart(): void  | function | true     | The function to be called when the timer starts |
+| onFinish(): void | function | true     | The function to be called after the time's up   |
 
 ## Contributing
 

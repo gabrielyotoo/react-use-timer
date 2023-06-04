@@ -31,14 +31,14 @@ test('should call onStart function if it exists', () => {
   );
 
   expect(called).toBeFalsy();
-  result.current.startTimer();
+  result.current.start();
   expect(called).toBeTruthy();
 });
 
-test('should decrease current time at time specified', () => {
-  const { result } = renderHook(() => useTimer(5, { runEvery: 200 }));
+test('should decrease current time at specified interval', () => {
+  const { result } = renderHook(() => useTimer(5, { interval: 200 }));
 
-  result.current.startTimer();
+  result.current.start();
 
   expect(result.current.currentTime).toBe(5);
   vi.advanceTimersByTime(100);
@@ -48,31 +48,31 @@ test('should decrease current time at time specified', () => {
 });
 
 test('should pause the timer when pause is requested', () => {
-  const { result } = renderHook(() => useTimer(5, { runEvery: 200 }));
-  const pauseSpy = vi.spyOn(result.current, 'pauseTimer');
+  const { result } = renderHook(() => useTimer(5, { interval: 200 }));
+  const pauseSpy = vi.spyOn(result.current, 'pause');
 
-  result.current.startTimer();
+  result.current.start();
   expect(pauseSpy).not.toHaveBeenCalled();
-  expect(result.current.running).toBeTruthy();
+  expect(result.current.isRunning).toBeTruthy();
 
-  result.current.pauseTimer();
+  result.current.pause();
   setImmediate(() => {
     expect(pauseSpy).toHaveBeenCalled();
-    expect(result.current.running).toBeFalsy();
+    expect(result.current.isRunning).toBeFalsy();
   });
 });
 
 test('should stop the timer when times up', () => {
-  const { result } = renderHook(() => useTimer(2, { runEvery: 100 }));
+  const { result } = renderHook(() => useTimer(2, { interval: 100 }));
 
-  result.current.startTimer();
+  result.current.start();
 
   expect(result.current.currentTime).toBe(2);
-  expect(result.current.running).toBeTruthy();
+  expect(result.current.isRunning).toBeTruthy();
   vi.advanceTimersByTime(200);
 
   setImmediate(() => {
-    expect(result.current.running).toBeFalsy();
+    expect(result.current.isRunning).toBeFalsy();
     expect(result.current.currentTime).toBe(0);
   });
 });
@@ -81,14 +81,14 @@ test('should call onFinish function if it exists', () => {
   let called = false;
   const { result } = renderHook(() =>
     useTimer(2, {
-      runEvery: 100,
+      interval: 100,
       onFinish: () => {
         called = true;
       },
     })
   );
 
-  result.current.startTimer();
+  result.current.start();
 
   expect(result.current.currentTime).toBe(2);
   expect(called).toBeFalsy();
