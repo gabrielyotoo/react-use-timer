@@ -7,8 +7,8 @@ import useTimer from '@gabrielyotoo/react-use-timer';
 function App() {
   const [finished, setFinished] = useState(false);
 
-  const { currentTime, running, startTimer, pauseTimer } = useTimer(10, {
-    runEvery: 1000,
+  const { currentTime, isRunning, start, pause } = useTimer(10, {
+    interval: 1000,
     onFinish: () => {
       setFinished(true);
     },
@@ -25,14 +25,14 @@ function App() {
       </div>
       {finished ? <p>Finished!</p> : null}
       <div style={{ flexDirection: 'row' }}>
-        {!running ? (
+        {!isRunning ? (
           <p>Not running! Timer at {currentTime}</p>
         ) : (
           <p>Timer at {currentTime}</p>
         )}
-        <button onClick={startTimer}>{!running ? 'Start!' : 'Reset'}</button>
-        {running ? (
-          <button style={{ marginLeft: 10 }} onClick={pauseTimer}>
+        <button onClick={start}>{!isRunning ? 'Start!' : 'Reset'}</button>
+        {isRunning ? (
+          <button style={{ marginLeft: 10 }} onClick={pause}>
             Pause
           </button>
         ) : null}
