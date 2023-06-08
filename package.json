@@ -4,6 +4,7 @@
   "description": "Hook for timer to React",
   "types": "lib/esm/types/useTimer.d.ts",
   "module": "lib/esm/useTimer.mjs",
+  "main": "lib/esm/useTimer.mjs",
   "directories": {
     "example": "example",
     "test": "tests",
