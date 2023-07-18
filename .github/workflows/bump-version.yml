@@ -33,10 +33,14 @@ jobs:
         run: |
           git config user.name 'Gabriel Yamamoto'
           git config user.email 'gabrielyamamoto82@gmail.com'
-      - name: bump version
+      - name: Install yarn's version plugin
         uses: Borales/actions-yarn@v4.2.0
         with:
-          cmd: version --${{ github.event.inputs.version }}
+          cmd: plugin import version
+      - name: Bump version
+        uses: Borales/actions-yarn@v4.2.0
+        with:
+          cmd: version ${{ github.event.inputs.version }}
 
       - name: Push latest version
         run: git push origin main --follow-tags
