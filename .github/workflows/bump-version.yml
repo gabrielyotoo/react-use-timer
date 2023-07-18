@@ -37,15 +37,13 @@ jobs:
         uses: Borales/actions-yarn@v4.2.0
         with:
           cmd: plugin import version
-      - name: Install jq
-        run: sudo apt-get install -y jq
       - name: Bump version
         uses: Borales/actions-yarn@v4.2.0
         with:
           cmd: version ${{ github.event.inputs.version }}
       - name: Commit and create new version tag
         run: |
-          VERSION=jq .version ./package.json
+          VERSION=jq ".version" ./package.json
           git add ./package.json
           git commit -m $VERSION
           git tag $VERSION
