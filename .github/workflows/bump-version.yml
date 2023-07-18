@@ -40,7 +40,7 @@ jobs:
       - name: Bump version
         uses: Borales/actions-yarn@v4.2.0
         with:
-          cmd: version ${{ github.event.inputs.version }}
+          cmd: version ${{ github.event.inputs.version }} --immediate
 
       - name: Push latest version
         run: git push origin main --follow-tags
