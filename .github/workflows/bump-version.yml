@@ -43,7 +43,7 @@ jobs:
           cmd: version ${{ github.event.inputs.version }}
       - name: Commit and create new version tag
         run: |
-          VERSION=jq ".version" ./package.json
+          VERSION=$(jq ".version" ./package.json)
           git add ./package.json
           git commit -m $VERSION
           git tag $VERSION
