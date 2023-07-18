@@ -1,6 +1,6 @@
 {
   "name": "@gabrielyotoo/react-use-timer",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Hook for timer to React",
   "types": "lib/esm/types/useTimer.d.ts",
   "module": "lib/esm/useTimer.mjs",
