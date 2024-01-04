@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { afterEach, beforeEach, expect, test, vi } from 'vitest';
-import useTimer from '../src/useTimer';
+import { useTimer } from '../src/useTimer';
 
 beforeEach(() => {
   vi.useFakeTimers();

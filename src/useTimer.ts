@@ -70,4 +70,8 @@ const useTimer: (time: number, options?: UseTimerOptions) => UseTimerReturn = (
   return { currentTime, start, isRunning, pause };
 };
 
-export default useTimer;
+/** @deprecated default export is deprecated, instead import { useTimer } from '@gabrielyotoo/react-use-timer' */
+const DEFAULT_EXPORT = useTimer;
+
+export { useTimer };
+export default DEFAULT_EXPORT;

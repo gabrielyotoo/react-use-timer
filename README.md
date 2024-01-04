@@ -1,4 +1,4 @@
-# @gabrielyotoo/react-use-timer &middot; [![GitHub license](https://img.shields.io/npm/l/@gabrielyotoo/react-use-timer?color=%23f22&style=flat-square)](https://github.com/gabrielyoto/react-use-timer/blob/main/LICENSE)[ ![npm version](https://img.shields.io/npm/v/@gabrielyotoo/react-use-timer?color=%23f22&style=flat-square)](https://www.npmjs.com/package/@gabrielyotoo/react-use-timer)
+# @gabrielyotoo/react-use-timer &middot; [![GitHub license](https://img.shields.io/npm/l/@gabrielyotoo/react-use-timer?color=%23f22&style=flat-square)](https://github.com/gabrielyoto/react-use-timer/blob/main/LICENSE)[![npm version](https://img.shields.io/npm/v/@gabrielyotoo/react-use-timer?color=%23f22&style=flat-square)](https://www.npmjs.com/package/@gabrielyotoo/react-use-timer)
 
 react-use-timer is a hook to help you with timers in React.
 
@@ -23,6 +23,8 @@ npm install @gabrielyotoo/react-use-timer
 A simple timer example showing the current time from 10 to 0.
 
 ```tsx
+import { useTimer } from '@gabrielyotoo/react-use-timer';
+
 function App() {
   const [finished, setFinished] = useState(false);
 
